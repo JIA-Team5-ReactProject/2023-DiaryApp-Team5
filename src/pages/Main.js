@@ -5,7 +5,7 @@ function Main() {
   return (
     <div>
       <Header />
-      <div className="grid grid-cols-4 justify-items-center gap-4 p-10">
+      <div className="mt-4 grid grid-cols-3 gap-5 p-10">
         <DiaryCard />
         <DiaryCard />
         <DiaryCard />

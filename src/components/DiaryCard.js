@@ -8,7 +8,7 @@ function DiaryCard() {
       onClick={() => {
         setModal(!modal);
       }}
-      className="bg-white p-8 shadow-md rounded-lg w-80 cursor-pointer"
+      className="bg-white p-8 shadow-md rounded-lg cursor-pointer"
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
