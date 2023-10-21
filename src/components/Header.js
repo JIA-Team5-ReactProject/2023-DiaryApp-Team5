@@ -1,23 +1,43 @@
+import { useRecoilState } from "recoil";
+import loginState from "../store/recoil";
+
 function Header() {
+  const [login, setLogin] = useRecoilState(loginState);
+
   return (
     <div className="h-10">
       <div className="flex p-4 fixed bg-white w-full border">
         <div className="flex-none text-5xl tracking-tighter font-mono mr-14">
           <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-10 h-10"
-            >
-              <path
+            {login ? (
+              <svg
+                className="h-10 w-10 text-black"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="h-10 w-10 text-black "
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-              />
-            </svg>
+              >
+                {" "}
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />{" "}
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            )}
 
             <span>Diary</span>
           </div>
@@ -33,8 +53,50 @@ function Header() {
             마이페이지
           </div>
         </div>
-        <div className="place-self-center">
-          <button>
+
+        <div className="place-self-end">
+          <div class="relative">
+            <label for="Search" className="sr-only">
+              {" "}
+              Search{" "}
+            </label>
+
+            <input
+              type="text"
+              id="Search"
+              placeholder=" Search for..."
+              className="w-full rounded-md p-2 border border-gray-300 py-2.5 pe-10 sm:text-sm"
+            />
+
+            <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
+              <button type="button" class="text-gray-600 hover:text-gray-700">
+                <span className="sr-only">Search</span>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-4 w-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div className="place-self-center ml-4">
+          <button
+            onClick={() => {
+              setLogin(!login);
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
