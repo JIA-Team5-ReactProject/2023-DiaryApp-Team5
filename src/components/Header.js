@@ -1,12 +1,15 @@
 import { useRecoilState } from "recoil";
-import loginState from "../store/recoil";
+import { loginState, modalState } from "../store/recoil";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const [modal, setModal] = useRecoilState(modalState);
   const [login, setLogin] = useRecoilState(loginState);
+  const navigate = useNavigate();
 
   return (
     <div className="h-10">
-      <div className="flex p-4 fixed bg-white w-full border">
+      <div className="modal? 'fixed' : 'none'} flex p-4 bg-white w-full border">
         <div className="flex-none text-5xl tracking-tighter font-mono mr-14">
           <div className="flex items-center">
             {login ? (
@@ -43,13 +46,28 @@ function Header() {
           </div>
         </div>
         <div className="flex-1 flex tracking-tighter font-extralight">
-          <div className="flex-none mr-10 place-self-end hover:cursor-pointer">
+          <div
+            className="flex-none mr-10 place-self-end hover:cursor-pointer"
+            onClick={() => {
+              navigate("/me");
+            }}
+          >
             나의 일기장
           </div>
-          <div className="flex-none mr-10 place-self-end hover:cursor-pointer">
+          <div
+            className="flex-none mr-10 place-self-end hover:cursor-pointer"
+            onClick={() => {
+              navigate("/every");
+            }}
+          >
             모두의 일기장
           </div>
-          <div className="flex-none mr-10 place-self-end hover:cursor-pointer">
+          <div
+            className="flex-none mr-10 place-self-end hover:cursor-pointer"
+            onClick={() => {
+              navigate("/myPage");
+            }}
+          >
             마이페이지
           </div>
         </div>
