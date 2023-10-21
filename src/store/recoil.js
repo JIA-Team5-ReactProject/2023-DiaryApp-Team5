@@ -5,9 +5,4 @@ const loginState = atom({
   default: false,
 });
 
-const modalState = atom({
-  key: "modal",
-  default: false,
-});
-
-export { loginState, modalState };
+export default loginState;

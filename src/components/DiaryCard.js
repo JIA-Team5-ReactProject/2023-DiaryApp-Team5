@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useRecoilState } from "recoil";
-import { modalState } from "../store/recoil";
 
 function DiaryCard() {
-  const [heart, setHeart] = useState(true); //하트 on/off
-  const [modal, setModal] = useRecoilState(modalState);
+  const [heart, setHeart] = useState(true);
+  const [modal, setModal] = useState(false);
   return (
     <div
       onClick={() => {
