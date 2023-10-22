@@ -15,6 +15,7 @@ function App() {
       {modal ? <DiaryModal /> : <></>}
       <Header />
       <Routes>
+        <Route path="/" element={<Main />} />
         <Route path="/every" element={<Every />} />
         <Route path="/me" element={<Me />} />
         <Route path="/myPage" element={<MyPage />} />

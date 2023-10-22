@@ -13,8 +13,8 @@ function DiaryModal() {
   }, []);
 
   return (
-    <div className="w-full h-full fixed bg-black/70 backdrop-blur-sm z-10 p-16">
-      <div className="bg-white rounded-xl p-3 px-36 mx-52 relative">
+    <div className="w-full h-full fixed bg-black/70 backdrop-blur-sm z-10 flex justify-center">
+      <div className="bg-white rounded-xl p-10 w-3/4 h-auto relative self-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
