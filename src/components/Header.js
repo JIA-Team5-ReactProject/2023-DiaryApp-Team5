@@ -1,15 +1,14 @@
 import { useRecoilState } from "recoil";
-import { loginState, modalState } from "../store/recoil";
+import { loginState } from "../store/recoil";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
-  const [modal, setModal] = useRecoilState(modalState);
   const [login, setLogin] = useRecoilState(loginState);
   const navigate = useNavigate();
 
   return (
     <div className="h-10">
-      <div className="modal? 'fixed' : 'none'} flex p-4 bg-white w-full border">
+      <div className="fixed flex p-4 bg-white w-full border">
         <div className="flex-none text-5xl tracking-tighter font-mono mr-14">
           <div className="flex items-center">
             {login ? (
@@ -42,7 +41,14 @@ function Header() {
               </svg>
             )}
 
-            <span>Diary</span>
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Diary
+            </span>
           </div>
         </div>
         <div className="flex-1 flex tracking-tighter font-extralight">
