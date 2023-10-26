@@ -1,0 +1,27 @@
+{
+  "member": [
+    {
+      "name": "김 현",
+      "user_id": "v0v0v",
+      "password": "hyen",
+      "profileImg": ""
+    },
+    {
+      "name": "이민혁",
+      "user_id": "w0w0w",
+      "password": "min",
+      "profileImg": ""
+    }
+  ],
+
+  "diary": [
+    {
+      "user_id": "v0v0v",
+      "post_date": "20231025",
+      "title": "후쿠오카 남자 김현",
+      "content": "안녕, 나는 김 현 후쿠오카 재밌더라",
+      "diaryImg": "[]",
+      "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
+    }
+  ]
+}
