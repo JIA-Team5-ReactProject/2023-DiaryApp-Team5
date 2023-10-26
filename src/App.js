@@ -4,17 +4,17 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Me from "./pages/Me";
 import MyPage from "./pages/MyPage";
-import { useRecoilState } from "recoil";
-import { modalState } from "./store/recoil";
-import DiaryModal from "./components/DiaryModal";
+import Diary from "./pages/Diary";
+
 
 function App() {
-  const [modal, setModal] = useRecoilState(modalState);
+  
   return (
     <div>
-      {modal ? <DiaryModal /> : <></>}
+      {/* {modal ? <DiaryModal /> : <></>} */}
       <Header />
       <Routes>
+        <Route path="/diary" element={<Diary />} />
         <Route path="/" element={<Main />} />
         <Route path="/every" element={<Every />} />
         <Route path="/me" element={<Me />} />
