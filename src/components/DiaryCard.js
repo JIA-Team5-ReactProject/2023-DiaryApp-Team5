@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../store/recoil";
+import { useNavigate } from "react-router-dom";
 
 function DiaryCard() {
   const [heart, setHeart] = useState(true); //하트 on/off
   const [modal, setModal] = useRecoilState(modalState);
+  const navigate = useNavigate();
   return (
     <div
-      onClick={() => {
-        setModal(!modal);
-      }}
+    onClick={() => {
+      navigate("/diary");
+    }}
       className="bg-white p-8 shadow-md rounded-lg cursor-pointer"
     >
       <div className="flex items-center justify-between mb-4">
