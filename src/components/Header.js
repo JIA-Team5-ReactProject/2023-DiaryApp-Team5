@@ -118,6 +118,7 @@ function Header() {
         <div className="place-self-center ml-4">
           <button
             onClick={() => {
+              navigate("/login")
               setLogin(!login);
             }}
           >

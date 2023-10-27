@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import Me from "./pages/Me";
 import MyPage from "./pages/MyPage";
 import Diary from "./pages/Diary";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="/every" element={<Every />} />
         <Route path="/me" element={<Me />} />
         <Route path="/myPage" element={<MyPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
       </Routes>
     </div>
   );
