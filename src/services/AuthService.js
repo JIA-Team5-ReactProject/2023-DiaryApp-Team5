@@ -13,6 +13,9 @@ class AuthService {
       if (!data) {
         throw new Error("이메일 혹은 비밀번호가 틀렸습니다.");
       }
+      
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("id", data.user.id);
 
       return data;
     } catch (error) {
@@ -32,7 +35,9 @@ class AuthService {
 
   static async isEmailTaken(email) {
     try {
-      const response = await axios.get(`http://localhost:3001/users?email=${email}`);
+      const response = await axios.get(
+        `http://localhost:3001/users?email=${email}`
+      );
       return response.data.length > 0; // 이메일이 이미 존재하는지 여부를 반환
     } catch (error) {
       throw error;
