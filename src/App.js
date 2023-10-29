@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 
 
+
 function App() {
   
   return (
@@ -20,7 +21,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/every" element={<Every />} />
         <Route path="/me" element={<Me />} />
-        <Route path="/myPage" element={<MyPage />} />
+        <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
       </Routes>
