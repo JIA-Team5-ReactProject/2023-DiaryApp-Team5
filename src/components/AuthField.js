@@ -1,15 +1,20 @@
-function AuthField({ field }) {
+function AuthField({ field, value, onChange }) {
+  const { name, type, placeholder, label } = field;
+
   return (
     <>
-      <label htmlFor={field.name} className="sr-only">
-        {field.label}
+      <label htmlFor={name} className="sr-only">
+        {label}
       </label>
       <div className="relative">
         <input
-          type={field.type}
-          id={field.name}
-          className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm"
-          placeholder={field.placeholder}
+          type={type}
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          className="font-extralight w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm"
+          placeholder={placeholder}
         />
       </div>
     </>
