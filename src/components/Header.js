@@ -1,9 +1,12 @@
 import { useRecoilState } from "recoil";
 import { loginState } from "../store/recoil";
 import { useNavigate } from "react-router-dom";
+import LoginDropdown from "./LoginDropdown";
+import { useState } from "react";
 
 function Header() {
-  const [login, setLogin] = useRecoilState(loginState);
+  const [login] = useRecoilState(loginState);
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -68,14 +71,6 @@ function Header() {
           >
             모두의 일기장
           </div>
-          <div
-            className="flex-none mr-10 place-self-end hover:cursor-pointer"
-            onClick={() => {
-              navigate("/myPage");
-            }}
-          >
-            마이페이지
-          </div>
         </div>
 
         <div className="place-self-end">
@@ -118,8 +113,7 @@ function Header() {
         <div className="place-self-center ml-4">
           <button
             onClick={() => {
-              navigate("/login")
-              setLogin(!login);
+              login === false ? navigate("/login") : setShowDropdown(!showDropdown);
             }}
           >
             <svg
@@ -137,6 +131,7 @@ function Header() {
               />
             </svg>
           </button>
+          {showDropdown && login && <LoginDropdown />}
         </div>
       </div>
     </div>
