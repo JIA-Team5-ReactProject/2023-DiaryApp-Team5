@@ -18,8 +18,6 @@ function Header() {
 
   function handleButtonClick() {
     const accessToken = localStorage.getItem('accessToken');
-    console.log('토큰 값' + accessToken);
-
     accessToken === null ? navigate('/login') : setShowDropdown(!showDropdown);
   }
 
