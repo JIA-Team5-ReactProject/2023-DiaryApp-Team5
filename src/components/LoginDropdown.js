@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 function LoginDropdown() {
+  const userId = localStorage.getItem('id');
+
   return (
     <div className="relative">
       <div
@@ -9,7 +11,7 @@ function LoginDropdown() {
       >
         <div className="p-2">
           <Link
-            to="/mypage"
+            to={`/mypage/${userId}`}
             className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
             role="menuitem"
           >

@@ -1,17 +1,29 @@
 import { useRecoilState } from "recoil";
 import { loginState } from "../store/recoil";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 import LoginDropdown from "./LoginDropdown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
   const [login] = useRecoilState(loginState);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+ 
+    setShowDropdown(false);
+  }, [location]); 
+
+
+  function handleButtonClick() {
+    const accessToken = localStorage.getItem('accessToken');
+    accessToken === null ? navigate('/login') : setShowDropdown(!showDropdown);
+  }
 
   return (
     <div className="h-10">
-      <div className="fixed flex p-4 bg-white w-full border">
+      <div className="fixed flex p-4 bg-white w-full border z-20">
         <div className="flex-none text-5xl tracking-tighter font-mono mr-14">
           <div className="flex items-center">
             {login ? (
@@ -112,9 +124,7 @@ function Header() {
 
         <div className="place-self-center ml-4">
           <button
-            onClick={() => {
-              login === false ? navigate("/login") : setShowDropdown(!showDropdown);
-            }}
+            onClick={handleButtonClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -132,6 +142,7 @@ function Header() {
             </svg>
           </button>
           {showDropdown && login && <LoginDropdown />}
+
         </div>
       </div>
     </div>

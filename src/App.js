@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/every" element={<Every />} />
         <Route path="/me" element={<Me />} />
-        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/:id" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
       </Routes>

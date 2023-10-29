@@ -26,6 +26,8 @@ function AuthForm({ type, onSubmit }) {
     email: "",
     password: "",
     nickname: "", // 회원가입일 경우에만
+    bio: "안녕하세요.",
+    detail: "반갑습니다.", // 회원가입일 경우에만
   });
 
   const [errorMessage, setErrorMessage] = useState(""); // 유효성 검사 에러메시지
@@ -43,12 +45,14 @@ function AuthForm({ type, onSubmit }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 필드 비었는지 확인
-    for (let key in formValues) {
-      // 회원가입 아닐 경우 nickname 무시
-      if (type !== "register" && key === "nickname") continue;
+    // 필드
+    const requiredFields =
+      type === "register"
+        ? ["email", "password", "nickname", "bio", "detail"]
+        : ["email", "password"];
 
-      if (!formValues[key]) {
+    for (let fieldName of requiredFields) {
+      if (!formValues[fieldName]) {
         setErrorMessage("입력되지 않은 필드가 있습니다. 확인해 주세요.");
         return;
       }
@@ -65,11 +69,11 @@ function AuthForm({ type, onSubmit }) {
             setErrorMessage("이미 사용 중인 이메일입니다.");
             return;
           }
+
           await AuthService.register(formValues);
           navigate("/login");
         } else {
           await AuthService.login(formValues);
-          setUser(true);
           navigate("/");
         }
       } catch (error) {

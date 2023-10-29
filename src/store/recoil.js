@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 const loginState = atom({
   key: "login",
-  default: false,
+  default: !!localStorage.getItem('accessToken'),
 });
 
 const modalState = atom({
