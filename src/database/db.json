@@ -1,19 +1,14 @@
 {
-  "member": [
+  "users": [
     {
-      "name": "김 현",
-      "user_id": "v0v0v",
-      "password": "hyen",
-      "profileImg": ""
-    },
-    {
-      "name": "이민혁",
-      "user_id": "w0w0w",
-      "password": "min",
-      "profileImg": ""
+      "email": "test@gmail.com",
+      "password": "$2a$10$.vrikK/7msME2b5/Xe.Xu.Eye10bu/hZi./61Mq9aW1HY1wFKBMR2",
+      "nickname": "원투",
+      "bio": "안녕하세요.",
+      "detail": "반갑습니다.",
+      "id": 5
     }
   ],
-
   "diary": [
     {
       "user_id": "v0v0v",
