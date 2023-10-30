@@ -7,6 +7,7 @@ import MyPage from "./pages/MyPage";
 import { useRecoilState } from "recoil";
 import { modalState } from "./store/recoil";
 import DiaryModal from "./components/DiaryModal";
+import Write from "./pages/Write";
 
 function App() {
   const [modal, setModal] = useRecoilState(modalState);
@@ -19,6 +20,7 @@ function App() {
         <Route path="/every" element={<Every />} />
         <Route path="/me" element={<Me />} />
         <Route path="/myPage" element={<MyPage />} />
+        <Route path="/write" element={<Write/>}/>
       </Routes>
     </div>
   );
