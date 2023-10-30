@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import LogoutService from "../services/LogoutService";
 
 function LoginDropdown() {
-  const userId = localStorage.getItem('id');
+  const userId = localStorage.getItem("id");
 
   return (
     <div className="relative">
@@ -20,11 +21,12 @@ function LoginDropdown() {
         </div>
 
         <div className="p-2">
-          <form method="POST" action="#">
+          <form>
             <button
               type="submit"
               className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
               role="menuitem"
+              onClick={LogoutService}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
