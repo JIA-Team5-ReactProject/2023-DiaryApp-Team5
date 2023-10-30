@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { loginState } from "../store/recoil";
-import { useNavigate, useLocation  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import LoginDropdown from "./LoginDropdown";
 import { useEffect, useState } from "react";
 
@@ -11,14 +11,12 @@ function Header() {
   const location = useLocation();
 
   useEffect(() => {
- 
     setShowDropdown(false);
-  }, [location]); 
-
+  }, [location]);
 
   function handleButtonClick() {
-    const accessToken = localStorage.getItem('accessToken');
-    accessToken === null ? navigate('/login') : setShowDropdown(!showDropdown);
+    const accessToken = localStorage.getItem("accessToken");
+    accessToken === null ? navigate("/login") : setShowDropdown(!showDropdown);
   }
 
   return (
@@ -86,9 +84,7 @@ function Header() {
         </div>
 
         <div className="place-self-center ml-4">
-          <button
-            onClick={handleButtonClick}
-          >
+          <button onClick={handleButtonClick}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -104,8 +100,7 @@ function Header() {
               />
             </svg>
           </button>
-          {showDropdown && login && <LoginDropdown />}
-
+          {showDropdown === true ? <LoginDropdown /> : null}
         </div>
       </div>
     </div>
