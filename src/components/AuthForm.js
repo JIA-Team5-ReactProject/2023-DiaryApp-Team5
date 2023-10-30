@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 import AuthField from "./AuthField";
 import FieldData from "../constants/FieldData";
 import AuthLinkButton from "./AuthLinkButton";
 import AuthService from "../services/AuthService";
-import { loginState } from "../store/recoil";
 
 function AuthForm({ type, onSubmit }) {
-  const setUser = useSetRecoilState(loginState);
   const formFields =
     type === "register"
       ? [
@@ -26,7 +23,7 @@ function AuthForm({ type, onSubmit }) {
     email: "",
     password: "",
     nickname: "", // 회원가입일 경우에만
-    bio: "안녕하세요.",
+    bio: "안녕하세요.", // 회원가입일 경우에만
     detail: "반갑습니다.", // 회원가입일 경우에만
   });
 
