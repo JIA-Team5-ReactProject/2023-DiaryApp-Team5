@@ -1,8 +1,7 @@
-export default function SearchInput ({onKeyDown, onChange, value, onClickButton}) {
+export default function SearchInput ({onChange, value}) {
   return (
     <>
       <input
-        onKeyDown={onKeyDown}
         onChange={onChange}
         value={value}
         type="text"
@@ -11,7 +10,7 @@ export default function SearchInput ({onKeyDown, onChange, value, onClickButton}
         className="w-full p-2 border-b border-gray-300 py-2.5 pe-10 sm:text-sm"
       />
       <span class="absolute inset-y-0 end-3 grid w-10 place-content-center">
-        <button type="submit" onClick={onClickButton} class="text-gray-600 hover:text-gray-700">
+        <button type="submit" class="text-gray-600 hover:text-gray-700">
           <span className="sr-only">Search</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
