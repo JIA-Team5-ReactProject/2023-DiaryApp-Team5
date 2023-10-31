@@ -1,4 +1,4 @@
-import SearchBar from '../components/searchbar/EverySearchBar';
+import SearchBar from '../components/searchbar/SearchBar';
 import { useEffect } from 'react';
 import DiaryCard from '../components/DiaryCard';
 import { useRecoilState } from 'recoil';

@@ -1,4 +1,4 @@
-class PostService {
+class SearchService {
   static async getData(userId, searchBy, page) {
     if (searchBy === 'user' && userId !=='') {
       const request = await fetch(`http://localhost:3001/diary?user_id=${userId}`);
@@ -12,4 +12,4 @@ class PostService {
 
 
 
-export default PostService;
+export default SearchService;

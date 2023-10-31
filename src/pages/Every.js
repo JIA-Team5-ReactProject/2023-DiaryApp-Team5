@@ -1,6 +1,6 @@
 import DiaryCard from "../components/DiaryCard";
 import { useEffect } from 'react';
-import SearchBar from '../components/searchbar/EverySearchBar';
+import SearchBar from '../components/searchbar/SearchBar';
 import { searchState } from "../store/recoil";
 import { useRecoilState } from 'recoil';
 import { useState } from 'react';

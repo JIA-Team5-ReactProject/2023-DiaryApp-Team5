@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import PostService from '../../services/PostService';
+import SearchService from '../../services/SearchService';
 import SearchInput from './SearchInput';
 import { useRecoilState } from "recoil";
 import { searchState } from "../../store/recoil";
@@ -11,7 +11,7 @@ export default function SearchBar({type, page}) {
   const [searchBy, setSearchBy] = useState('title');
 
   useEffect(() => {
-    const get = PostService.getData(type==='me' ? 'v0v0v' : keyWord, type==='me' ? 'user' : searchBy, page);
+    const get = SearchService.getData(type==='me' ? 'v0v0v' : keyWord, type==='me' ? 'user' : searchBy, page);
     get.then((res) => {
       setData(res);
     });    
@@ -19,7 +19,7 @@ export default function SearchBar({type, page}) {
 
   const changeSearch = (e) => {
     setKeyWord(e.target.value);
-    const get = PostService.getData(e.target.value, searchBy, page);
+    const get = SearchService.getData(e.target.value, searchBy, page);
     get.then((res) => {
       const arr = [];
       if(searchBy === 'user') {
