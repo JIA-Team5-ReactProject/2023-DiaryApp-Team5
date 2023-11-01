@@ -10,4 +10,9 @@ const modalState = atom({
   default: false,
 });
 
-export { loginState, modalState };
+const searchState = atom({
+  key: "search",
+  default: [],
+})
+
+export { loginState, modalState, searchState };

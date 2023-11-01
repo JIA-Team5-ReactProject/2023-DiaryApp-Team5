@@ -1,30 +1,38 @@
-import DiaryCard from "../components/DiaryCard";
 import SearchBar from '../components/searchbar/SearchBar';
-import { useEffect, useState } from 'react';
-import getPost from '../util/getPost'
+import { useEffect } from 'react';
+import DiaryCard from '../components/DiaryCard';
+import { useRecoilState } from 'recoil';
+import { searchState } from "../store/recoil";
+import { useState } from 'react';
 
 function Me() {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    getPost().then((result) => {
-      setData(result);
-    }).catch((err) => {
-      console.error(err);
-    });
-  },[]);
+  const [data] = useRecoilState(searchState);
+  const [page, setPage] = useState(9);
 
-  console.log(data);
+  const infiniteScroll = () => {
+    const{ clientHeight, scrollHeight, scrollTop } = document.documentElement;
+    if (clientHeight + scrollTop >= scrollHeight ) {
+      console.log('end')
+      setPage(page + 9);
+    } 
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", infiniteScroll);
+    return () => {
+      window.removeEventListener("scroll", infiniteScroll);
+    }
+  },[]);
 
   return (
     <>
-      <SearchBar />
+      <SearchBar data={data} type="me" page={page} />
       <div className="mt-4 grid grid-cols-3 gap-5 p-10">
         {data.map((element) => (
-          <DiaryCard key={element.id} name={element.user_id} />
+          <DiaryCard key={element.id} name={element.user_id} postDate={element.post_date} />
         ))}
       </div>      
     </>
-    
   );
 }
 
