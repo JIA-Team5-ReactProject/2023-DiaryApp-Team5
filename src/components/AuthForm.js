@@ -4,8 +4,12 @@ import AuthField from "./AuthField";
 import FieldData from "../constants/FieldData";
 import AuthLinkButton from "./AuthLinkButton";
 import AuthService from "../services/AuthService";
+import { useSetRecoilState } from 'recoil';
+import { loginState } from '../store/recoil';
 
 function AuthForm({ type, onSubmit }) {
+  const setLogin = useSetRecoilState(loginState);
+
   const formFields =
     type === "register"
       ? [
@@ -24,7 +28,6 @@ function AuthForm({ type, onSubmit }) {
     password: "",
     nickname: "", // 회원가입일 경우에만
     bio: "안녕하세요.", // 회원가입일 경우에만
-    detail: "반갑습니다.", // 회원가입일 경우에만
   });
 
   const [errorMessage, setErrorMessage] = useState(""); // 유효성 검사 에러메시지
@@ -45,7 +48,7 @@ function AuthForm({ type, onSubmit }) {
     // 필드
     const requiredFields =
       type === "register"
-        ? ["email", "password", "nickname", "bio", "detail"]
+        ? ["email", "password", "nickname", "bio"]
         : ["email", "password"];
 
     for (let fieldName of requiredFields) {
@@ -71,6 +74,7 @@ function AuthForm({ type, onSubmit }) {
           navigate("/login");
         } else {
           await AuthService.login(formValues);
+          setLogin(true);
           navigate("/");
         }
       } catch (error) {
