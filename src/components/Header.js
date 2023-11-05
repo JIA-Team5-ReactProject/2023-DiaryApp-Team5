@@ -24,7 +24,7 @@ function Header() {
       <div className="fixed flex p-4 bg-white w-full border z-20">
         <div className="flex-none text-5xl tracking-tighter font-mono mr-14">
           <div className="flex items-center">
-            {login ? (
+            {login === true ? (
               <svg
                 className="h-10 w-10 text-black"
                 fill="none"

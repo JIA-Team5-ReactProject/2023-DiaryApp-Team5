@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import LogoutService from "../services/LogoutService";
+import { useSetRecoilState } from 'recoil';
+import { loginState } from '../store/recoil';
+
 
 function LoginDropdown() {
+  const logout = LogoutService();
   const userId = localStorage.getItem("id");
+  const setLogin = useSetRecoilState(loginState);
 
   return (
     <div className="relative">
@@ -19,6 +24,15 @@ function LoginDropdown() {
             마이페이지로 이동
           </Link>
         </div>
+        <div className="p-2">
+          <Link
+            to={`/account/${userId}`}
+            className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+            role="menuitem"
+          >
+            개인정보 관리
+          </Link>
+        </div>
 
         <div className="p-2">
           <form>
@@ -26,7 +40,7 @@ function LoginDropdown() {
               type="submit"
               className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
               role="menuitem"
-              onClick={LogoutService}
+              onClick={(e) => {e.preventDefault(); logout(); setLogin(false);}}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
