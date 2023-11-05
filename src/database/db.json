@@ -2,25 +2,31 @@
   "users": [
     {
       "email": "test@gmail.com",
-      "password": "$2a$10$.vrikK/7msME2b5/Xe.Xu.Eye10bu/hZi./61Mq9aW1HY1wFKBMR2",
-      "nickname": "원투",
-      "bio": "안녕하세요.",
-      "detail": "반갑습니다.",
+      "password": "$2a$10$pLKh3Xj93YvaVQDnOdgtvuM./OI3RDNqB9SWsmD6zRAPRgS94fguO",
+      "nickname": "111",
+      "bio": "안녕하세요 올리버 쌤입니ㅁㅁ다 와 보소",
       "id": 5
+    },
+    {
+      "email": "test2@gmail.com",
+      "password": "$2a$10$dWeUXyImW6XygjeXlmUce.ipF66zi2vd1ocLT3XD4hEK.xZZHJyC6",
+      "nickname": "dd",
+      "bio": "안녕하세요.",
+      "id": 6
     }
   ],
   "diary": [
-    { 
-      "id" : 1,
+    {
+      "id": 1,
       "user_id": "v0v0v",
       "post_date": "20231025",
       "title": "김현 병신",
       "content": "안녕, 나는 김 현 후쿠오카 재밌더라",
       "diaryImg": "[]",
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
-    }, 
+    },
     {
-      "id" : 2,
+      "id": 2,
       "user_id": "aaa",
       "post_date": "20231025",
       "title": "김지훈 병신",
@@ -29,7 +35,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 3,
+      "id": 3,
       "user_id": "vbbb",
       "post_date": "20231025",
       "title": "이민혁 병신",
@@ -38,7 +44,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 4,
+      "id": 4,
       "user_id": "vbbb",
       "post_date": "20231025",
       "title": "이민혁 병신",
@@ -47,7 +53,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 5,
+      "id": 5,
       "user_id": "aaa",
       "post_date": "20231025",
       "title": "테스트이다",
@@ -56,7 +62,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 6,
+      "id": 6,
       "user_id": "v0v0v",
       "post_date": "20231025",
       "title": "아 존나 하기 싫다 시발",
@@ -65,7 +71,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 7,
+      "id": 7,
       "user_id": "vbbb",
       "post_date": "20231025",
       "title": "좆같ㅁㄴㅇㅁㄴㅇ네~~",
@@ -74,7 +80,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 8,
+      "id": 8,
       "user_id": "aaa",
       "post_date": "20231025",
       "title": "좆같네~~aaa",
@@ -83,7 +89,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 9,
+      "id": 9,
       "user_id": "vbbb",
       "post_date": "20231025",
       "title": "안녕하세요 윤 석열입니다.~",
@@ -92,7 +98,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 10,
+      "id": 10,
       "user_id": "v0v0v",
       "post_date": "20231025",
       "title": "올리버쌤 입장문",
@@ -101,7 +107,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 11,
+      "id": 11,
       "user_id": "v0v0v",
       "post_date": "20231025",
       "title": "김지훈 권지훈 김지훈",
@@ -110,7 +116,7 @@
       "diaryComment": "[{'user_id' : 'w0w0w', 'text' : '한남아'},{}]"
     },
     {
-      "id" : 12,
+      "id": 12,
       "user_id": "vbbb",
       "post_date": "20231025",
       "title": "일간베스트",
