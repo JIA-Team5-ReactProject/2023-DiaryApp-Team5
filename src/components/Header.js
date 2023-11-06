@@ -1,17 +1,30 @@
 import { useRecoilState } from "recoil";
 import { loginState } from "../store/recoil";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import LoginDropdown from "./LoginDropdown";
+import { useEffect, useState } from "react";
 
 function Header() {
-  const [login, setLogin] = useRecoilState(loginState);
+  const [login] = useRecoilState(loginState);
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    setShowDropdown(false);
+  }, [location]);
+
+  function handleButtonClick() {
+    const accessToken = localStorage.getItem("accessToken");
+    accessToken === null ? navigate("/login") : setShowDropdown(!showDropdown);
+  }
 
   return (
     <div className="h-10">
-      <div className="fixed flex p-4 bg-white w-full border">
+      <div className="fixed flex p-4 bg-white w-full border z-20">
         <div className="flex-none text-5xl tracking-tighter font-mono mr-14">
           <div className="flex items-center">
-            {login ? (
+            {login === true ? (
               <svg
                 className="h-10 w-10 text-black"
                 fill="none"
@@ -68,59 +81,10 @@ function Header() {
           >
             모두의 일기장
           </div>
-          <div
-            className="flex-none mr-10 place-self-end hover:cursor-pointer"
-            onClick={() => {
-              navigate("/myPage");
-            }}
-          >
-            마이페이지
-          </div>
-        </div>
-
-        <div className="place-self-end">
-          <div class="relative">
-            <label for="Search" className="sr-only">
-              {" "}
-              Search{" "}
-            </label>
-
-            <input
-              type="text"
-              id="Search"
-              placeholder=" Search for..."
-              className="w-full rounded-md p-2 border border-gray-300 py-2.5 pe-10 sm:text-sm"
-            />
-
-            <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
-              <button type="button" class="text-gray-600 hover:text-gray-700">
-                <span className="sr-only">Search</span>
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-4 w-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                  />
-                </svg>
-              </button>
-            </span>
-          </div>
         </div>
 
         <div className="place-self-center ml-4">
-          <button
-            onClick={() => {
-              setLogin(!login);
-            }}
-          >
+          <button onClick={handleButtonClick}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -136,6 +100,7 @@ function Header() {
               />
             </svg>
           </button>
+          {showDropdown === true ? <LoginDropdown /> : null}
         </div>
       </div>
     </div>

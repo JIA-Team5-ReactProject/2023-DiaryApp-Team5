@@ -4,22 +4,29 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Me from "./pages/Me";
 import MyPage from "./pages/MyPage";
-import { useRecoilState } from "recoil";
-import { modalState } from "./store/recoil";
-import DiaryModal from "./components/DiaryModal";
+import Diary from "./pages/Diary";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Account from "./pages/Account";
+
+
 import Write from "./pages/Write";
 
 function App() {
-  const [modal, setModal] = useRecoilState(modalState);
+  
   return (
     <div>
-      {modal ? <DiaryModal /> : <></>}
+      {/* {modal ? <DiaryModal /> : <></>} */}
       <Header />
       <Routes>
+        <Route path="/diary" element={<Diary />} />
         <Route path="/" element={<Main />} />
         <Route path="/every" element={<Every />} />
         <Route path="/me" element={<Me />} />
-        <Route path="/myPage" element={<MyPage />} />
+        <Route path="/mypage/:id" element={<MyPage />} />
+        <Route path="/account/:id" element={<Account />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
         <Route path="/write" element={<Write/>}/>
       </Routes>
     </div>
