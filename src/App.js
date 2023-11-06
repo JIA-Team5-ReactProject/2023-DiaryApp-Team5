@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Account from "./pages/Account";
 
 
+import Write from "./pages/Write";
 
 function App() {
   
@@ -26,6 +27,7 @@ function App() {
         <Route path="/account/:id" element={<Account />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/write" element={<Write/>}/>
       </Routes>
     </div>
   );
