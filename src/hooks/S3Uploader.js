@@ -10,7 +10,7 @@ const REGION = "ap-northeast-2";
 AWS.config.update({
   region: REGION,
   accessKeyId: "",
-  secretAccessKey: "+Z",
+  secretAccessKey: "",
 });
 
 // S3 인스턴스 생성 -> S3 버킷 접근 가능(즉, 업로드 가능하다는 뜻)
