@@ -1,26 +1,52 @@
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 function DiaryValue() {
+  const [diary, setDiary] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    getDiary();
+  }, []);
+
+  const getDiary = () => {
+    fetch(`http://localhost:3001/diary/${id}`)
+      .then(response => response.json())
+      .then(json => {
+        setDiary(json);
+      })
+      .catch(error => {
+        console.log('Error fetching diary data:', error);
+      });
+  };
+
+  if (diary === null) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <>
-      <form action="">
-        <img src="https://kr.xinhuanet.com/2015-02/21/134008555_14244176276511n.jpg"
-          width="700" height="700"></img>
-
-
-
-        <div>
-          일기 나옴 (DiaryValue)
-        </div>
-        <div>
-          제목 (DiaryValue)
-        </div>
-        <div>
-          내용(DiaryValue)
-        </div>
-      </form>
-      
-      
-    </>
-  )
+    <div>
+      <div style={{ fontSize: 20 }}>아이디: {diary.user_id}</div>
+      <br />
+      <div>작성일: {diary.post_date}</div>
+      <hr />
+      <div style={{ fontSize: 20 }}>제목: {diary.title}</div>
+      <hr />
+      <div style={{ fontSize: 15 }}>내용: {diary.content}</div>
+      <hr />
+      {diary.images &&
+        diary.images.map((image, index) => (
+          <div key={index}>
+            <img
+              src={image}
+              alt={`이미지 ${index}`}
+              style={{ maxWidth: '100%' }}
+            />
+            <br />
+          </div>
+        ))}
+    </div>
+  );
 }
 
 export default DiaryValue;

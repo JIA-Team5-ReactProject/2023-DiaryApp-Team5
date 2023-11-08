@@ -30,7 +30,7 @@ function Every() {
       <SearchBar data={data} type="every" page={page} />
       <div className="mt-4 grid grid-cols-3 gap-5 p-10">
       {data.map((element) => (
-        <DiaryCard key={element.id} name={element.user_id} postDate={element.post_date}/>
+        <DiaryCard key={element.id} id={element.id} name={element.user_id} postDate={element.post_date}/>
       ))}
       </div>
     </>
