@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from 'recoil';
-import { loginState } from '../store/recoil';
-
+import { useSetRecoilState } from "recoil";
+import { loginState } from "../store/recoil";
 
 function SetAccout() {
   const [nickname, setNickname] = useState("");
@@ -36,14 +35,13 @@ function SetAccout() {
     if (confirmed) {
       try {
         await axios.delete(`http://localhost:3001/users/${userId}`);
-        window.alert('탈퇴가 완료 되었습니다.');
+        window.alert("탈퇴가 완료 되었습니다.");
         setLogin(false);
         localStorage.removeItem("accessToken");
         localStorage.removeItem("id");
-        navigate('/')
-        
+        navigate("/");
       } catch (error) {
-        console.error('계정 삭제 실패', error);
+        console.error("계정 삭제 실패", error);
       }
     }
   };
@@ -87,10 +85,11 @@ function SetAccout() {
         </div>
 
         <div className="flex items-center justify-between">
-          <button 
-          onClick={handleAccountDeletion}
-          type="button"
-          className="bg-transparent border-none p-0 m-0 text-sm text-red-600 hover:text-red-600 hover:underline focus:outline-none">
+          <button
+            onClick={handleAccountDeletion}
+            type="button"
+            className="bg-transparent border-none p-0 m-0 text-sm text-red-600 hover:text-red-600 hover:underline focus:outline-none"
+          >
             탈퇴하기
           </button>
 

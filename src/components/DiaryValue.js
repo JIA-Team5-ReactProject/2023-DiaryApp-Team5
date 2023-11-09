@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 
-function DiaryValue() {
+function DiaryValue({ diaryId }) {
   const [diary, setDiary] = useState(null);
-  const { id } = useParams();
 
   useEffect(() => {
     getDiary();
   }, []);
 
   const getDiary = () => {
-    fetch(`http://localhost:3001/diary/${id}`)
-      .then(response => response.json())
-      .then(json => {
+    fetch(`http://localhost:3001/diary/${diaryId}`)
+      .then((response) => response.json())
+      .then((json) => {
         setDiary(json);
       })
-      .catch(error => {
-        console.log('Error fetching diary data:', error);
+      .catch((error) => {
+        console.log("Error fetching diary data:", error);
       });
   };
 
@@ -40,7 +38,7 @@ function DiaryValue() {
             <img
               src={image}
               alt={`이미지 ${index}`}
-              style={{ maxWidth: '100%' }}
+              style={{ maxWidth: "100%" }}
             />
             <br />
           </div>

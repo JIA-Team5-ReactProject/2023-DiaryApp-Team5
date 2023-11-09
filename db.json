@@ -9,28 +9,6 @@
       "images": [
         "https://j1a.s3.ap-northeast-2.amazonaws.com/스크린샷 2023-10-30 171451.png",
         "https://j1a.s3.ap-northeast-2.amazonaws.com/스크린샷 2023-10-30 171451.png"
-      ],
-      "comments": [
-        {
-          "user_id": "user",
-          "comment": "ㄷㅈㅎㄷㅈ",
-          "id": 2
-        },
-        {
-          "user_id": "user",
-          "comment": "234",
-          "id": 8
-        },
-        {
-          "user_id": "user",
-          "comment": "ㅂㅈㄷ",
-          "id": 9
-        },
-        {
-          "user_id": "user",
-          "comment": "ㅂㅈㄷ",
-          "id": 10
-        }
       ]
     },
     {
@@ -42,14 +20,69 @@
       "images": [
         "https://j1a.s3.ap-northeast-2.amazonaws.com/스크린샷 2023-10-30 171451.png",
         "https://j1a.s3.ap-northeast-2.amazonaws.com/스크린샷 2023-10-30 171451.png"
-      ],
-      "comments": [
-        {
-          "user_id": "user",
-          "comment": "234",
-          "id": 8
-        }
       ]
+    }
+  ],
+  "comments": [
+    {
+      "user_id": "user",
+      "comment": "234",
+      "id": 1,
+      "diary_id": 3
+    },
+    {
+      "user_id": "user",
+      "comment": "asdf",
+      "diary_id": "1",
+      "id": 8
+    },
+    {
+      "user_id": "user",
+      "comment": "ㅁㄴㅇㅂㅈㄷ",
+      "diary_id": "2",
+      "id": 11
+    },
+    {
+      "user_id": "user",
+      "comment": "ㅁㄴㅇㅂㅈㄷㅁㄴㅇㄻㄴㅇㅁㄴㅇ",
+      "diary_id": "2",
+      "id": 12
+    },
+    {
+      "user_id": "user",
+      "comment": "asdasdsdfsdf",
+      "diary_id": "1",
+      "id": 14
+    },
+    {
+      "user_id": "user",
+      "comment": "asdasd",
+      "diary_id": "1",
+      "id": 17
+    },
+    {
+      "user_id": "aaa",
+      "comment": "qwe",
+      "diary_id": "1",
+      "id": 18
+    },
+    {
+      "user_id": "aaa",
+      "comment": "sdfsdf",
+      "diary_id": "1",
+      "id": 19
+    },
+    {
+      "user_id": "aaa",
+      "comment": "sdfgsdfg",
+      "diary_id": "1",
+      "id": 20
+    },
+    {
+      "user_id": "aaa",
+      "comment": "123123",
+      "diary_id": "2",
+      "id": 21
     }
   ]
 }
