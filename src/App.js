@@ -8,6 +8,7 @@ import Diary from "./pages/Diary";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Account from "./pages/Account";
+import Write from "./pages/Write";
 
 
 
@@ -22,10 +23,11 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/every" element={<Every />} />
         <Route path="/me" element={<Me />} />
-        <Route path="/mypage/:id" element={<MyPage />} />
+        <Route path="/myPage/:id" element={<MyPage />} />
         <Route path="/account/:id" element={<Account />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/write" element={<Write/>}/>
       </Routes>
     </div>
   );
