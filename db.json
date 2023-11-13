@@ -62,27 +62,45 @@
     },
     {
       "user_id": "aaa",
-      "comment": "qwe",
-      "diary_id": "1",
-      "id": 18
-    },
-    {
-      "user_id": "aaa",
-      "comment": "sdfsdf",
-      "diary_id": "1",
-      "id": 19
-    },
-    {
-      "user_id": "aaa",
       "comment": "sdfgsdfg",
       "diary_id": "1",
       "id": 20
     },
     {
       "user_id": "aaa",
-      "comment": "123123",
+      "comment": "ㄴㅇㄹ",
       "diary_id": "2",
-      "id": 21
+      "id": 22
+    },
+    {
+      "user_id": "aaa",
+      "comment": "하하하하ㅏ",
+      "diary_id": "2",
+      "id": 23
+    },
+    {
+      "user_id": "aaa",
+      "comment": "ㄴㅇㄹㄴㅇㄹㄴㅇㄹ",
+      "diary_id": "2",
+      "id": 24
+    },
+    {
+      "user_id": "aaa",
+      "comment": "이게 뭐지?",
+      "diary_id": "2",
+      "id": 25
+    },
+    {
+      "user_id": "aaa",
+      "comment": "ㅁㄴㅇ",
+      "diary_id": "2",
+      "id": 26
+    },
+    {
+      "user_id": "aaa",
+      "comment": "ㅁㄴㅇ",
+      "diary_id": "2",
+      "id": 27
     }
   ]
 }

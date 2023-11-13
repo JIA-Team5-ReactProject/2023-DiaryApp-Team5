@@ -45,37 +45,29 @@ export default function Comments({ diaryId }) {
 
   return (
     <>
-      {/* 원래 댓글 조회 눌러야 댓글이 나오는건데 일단 없앴음 */}
-      {/* <button onClick={getDiary} style={{ fontSize: "20px" }}>
-        댓글 조회
-      </button> */}
+      <link href="/dist/output.css" rel="stylesheet"></link>
 
-      <div
-        style={{
-          padding: "20px",
-          backgroundColor: "#f5f5f5",
-          borderRadius: "5px",
-        }}
-      >
-        <h2 style={{ marginBottom: "10px" }}>댓글 작성</h2>
+      {/* 댓글 작성 폼 */}
+      <div className="p-6 bg-gray-100 rounded">
+        <h2 className="text-xl font-bold mb-4">댓글 작성</h2>
         <form>
-          <div style={{ marginBottom: "10px" }}>
-            <label htmlFor="content">내용</label>
+          <div className="mb-4">
+            <label
+              htmlFor="content"
+              className="block text-sm font-medium text-gray-600"
+            >
+              내용
+            </label>
             <input
               id="content"
               value={content}
               onChange={handleContentChange}
+              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             />
           </div>
           <button
             type="button"
-            style={{
-              color: "black",
-              border: "2px solid",
-              padding: "10px 20px",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
+            className="px-4 py-2 text-white bg-black rounded-md cursor-pointer"
             onClick={handler.post}
           >
             작성 완료
@@ -83,18 +75,14 @@ export default function Comments({ diaryId }) {
         </form>
       </div>
 
-      <div>
-        <h1 style={{ fontSize: "20px" }}>댓글 창</h1>
-        <table>
+      {/* 댓글 목록 */}
+      <div className="mt-6">
+        <h1 className="text-lg font-bold">댓글 창</h1>
+        <table className="w-full mt-4">
           <tbody>
-            {comments.map(
-              (
-                comment //comments안의 값을 쭉 읽음
-              ) => (
-                <Comment data={comment} /> //이 코드 아래에 따로 정의한 Comment(컴포넌트)를 반복하여 실행
-                //즉 댓글 1개가 컴포넌트임 그걸comments.map로 반복해서 값을 표시
-              )
-            )}
+            {comments.map((comment) => (
+              <Comment key={comment.id} data={comment} />
+            ))}
           </tbody>
         </table>
       </div>
@@ -118,14 +106,20 @@ const Comment = ({ data }) => {
 
   return (
     //댓글 내용 표시
-    <tr key={data.id}>
-      <td style={{ verticalAlign: "top" }}>
-        <p>아이디: {data.user_id}</p>
+    <tr key={data.id} className="border-b">
+      <td className="p-4">
+        <p className="text-gray-600">아이디: {data.user_id}</p>
         <p>{data.comment}</p>
       </td>
-      <td>
+      <td className="p-4">
+        {/* 삭제 버튼 */}
         {loggedInUserId === data.user_id && (
-          <button onClick={handler.delete}>삭제</button>
+          <button
+            className="border border-red-500 px-3 py-1 text-red-500 rounded hover:bg-red-500 hover:text-white"
+            onClick={handler.delete}
+          >
+            삭제
+          </button>
         )}
       </td>
     </tr>

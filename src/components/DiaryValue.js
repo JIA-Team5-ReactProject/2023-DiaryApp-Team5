@@ -23,24 +23,24 @@ function DiaryValue({ diaryId }) {
   }
 
   return (
-    <div>
-      <div style={{ fontSize: 20 }}>아이디: {diary.user_id}</div>
-      <br />
-      <div>작성일: {diary.post_date}</div>
-      <hr />
-      <div style={{ fontSize: 20 }}>제목: {diary.title}</div>
-      <hr />
-      <div style={{ fontSize: 15 }}>내용: {diary.content}</div>
-      <hr />
+    <div className="p-4">
+      <div className="flex justify-between">
+        <div className="text-xl font-bold">아이디: {diary.user_id}</div>
+        <div className="text-sm">작성일: {diary.post_date}</div>
+      </div>
+      <hr className="my-4" />
+      <div className="text-xl font-bold">제목: {diary.title}</div>
+      <hr className="my-4" />
+      <div className="text-base">내용: {diary.content}</div>
+      <hr className="my-4" />
       {diary.images &&
         diary.images.map((image, index) => (
-          <div key={index}>
+          <div key={index} className="mb-4">
             <img
               src={image}
               alt={`이미지 ${index}`}
-              style={{ maxWidth: "100%" }}
+              className="max-w-full rounded"
             />
-            <br />
           </div>
         ))}
     </div>
