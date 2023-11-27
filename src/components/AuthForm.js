@@ -6,6 +6,7 @@ import AuthLinkButton from "./AuthLinkButton";
 import AuthService from "../services/AuthService";
 import { useSetRecoilState } from 'recoil';
 import { loginState } from '../store/recoil';
+import defaultImage from '../assets/default.png';
 
 function AuthForm({ type, onSubmit }) {
   const setLogin = useSetRecoilState(loginState);
@@ -28,6 +29,7 @@ function AuthForm({ type, onSubmit }) {
     password: "",
     nickname: "", // 회원가입일 경우에만
     bio: "안녕하세요.", // 회원가입일 경우에만
+    image: defaultImage
   });
 
   const [errorMessage, setErrorMessage] = useState(""); // 유효성 검사 에러메시지
@@ -98,6 +100,7 @@ function AuthForm({ type, onSubmit }) {
             onChange={handleChange}
           />
         ))}
+        
         {errorMessage && (
           <div className="text-red-400 text-xs tracking-tight">
             {errorMessage}

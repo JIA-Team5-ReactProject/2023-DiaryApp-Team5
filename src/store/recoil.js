@@ -13,6 +13,14 @@ const modalState = atom({
 const searchState = atom({
   key: "search",
   default: [],
-})
+});
 
-export { loginState, modalState, searchState };
+const s3UploadState = atom({
+  key: 's3UploadState',
+  default: {
+    progress: 0,
+    status: 'idle'
+  },
+});
+
+export { loginState, modalState, searchState, s3UploadState };

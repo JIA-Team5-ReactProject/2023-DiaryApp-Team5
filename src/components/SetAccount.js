@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { loginState } from "../store/recoil";
+import { useS3Uploader } from "../hooks/S3Uploader";
 
 function SetAccout() {
   const [nickname, setNickname] = useState("");
@@ -10,6 +11,7 @@ function SetAccout() {
   const userId = localStorage.getItem("id");
   const navigate = useNavigate();
   const setLogin = useSetRecoilState(loginState);
+  const { uploadFileToS3 } = useS3Uploader();
 
   // 회원 정보 수정
   const updateUserProfile = async (e) => {
@@ -18,6 +20,18 @@ function SetAccout() {
     const updates = {};
     if (nickname) updates.nickname = nickname;
     if (password) updates.password = password;
+
+    const fileInput = document.querySelector('input[type="file"]');
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      try {
+        const imageUrl = await uploadFileToS3(file); // S3 업로드 함수
+        updates.image = imageUrl;
+      } catch (error) {
+        console.error("이미지 업로드 실패", error);
+        return;
+      }
+    }
 
     try {
       await axios.patch(`http://localhost:3001/users/${userId}`, updates);
@@ -84,18 +98,23 @@ function SetAccout() {
           </div>
         </div>
 
+        <input
+          type="file"
+          className="file-input file-input-ghost w-full max-w-m"
+        />
+
         <div className="flex items-center justify-between">
           <button
             onClick={handleAccountDeletion}
             type="button"
-            className="bg-transparent border-none p-0 m-0 text-sm text-red-600 hover:text-red-600 hover:underline focus:outline-none"
+            className="bg-transparent border-none p-0 m-0 mt-5 text-sm text-red-600 hover:text-red-600 hover:underline focus:outline-none"
           >
             탈퇴하기
           </button>
 
           <button
             type="submit"
-            className="inline-block rounded-lg bg-black px-5 py-3 text-sm font-medium text-white"
+            className="inline-block rounded-lg bg-black mt-5 px-5 py-3 text-sm font-medium text-white"
           >
             수정하기
           </button>

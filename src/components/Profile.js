@@ -93,7 +93,7 @@ function Profile() {
               <div className="hidden sm:block sm:shrink-0">
                 <img
                   alt="User"
-                  src="https://yt3.googleusercontent.com/ytc/APkrFKZVkeEZhHqvCktgwxlXTmpzzdDh64-BJ4X3lQ2P=s900-c-k-c0x00ffffff-no-rj"
+                  src={user.image}
                   className="h-24 w-24 rounded-lg object-cover shadow-sm"
                 />
               </div>
