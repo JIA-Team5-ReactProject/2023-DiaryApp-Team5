@@ -13,7 +13,7 @@ function DiaryCard({ id, name, postDate, img }) {
       onClick={() => {
         navigate(`/diary/${id}`);
       }}
-      className="bg-white p-8 shadow-md rounded-lg cursor-pointer"
+      className="bg-white p-8 shadow-md rounded-lg cursor-pointer dark:bg-slate-600"
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
@@ -23,8 +23,8 @@ function DiaryCard({ id, name, postDate, img }) {
             className="w-8 h-8 rounded-full"
           />
           <div>
-            <p className="text-gray-800 font-semibold">{name}</p>
-            <p className="text-gray-500 text-sm">{postDate}</p>
+            <p className="text-gray-800 dark:text-gray-200 font-semibold">{name}</p>
+            <p className="text-gray-500 text-sm dark:text-gray-200">{postDate}</p>
           </div>
         </div>
       </div>
