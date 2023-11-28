@@ -68,10 +68,10 @@ function Header() {
           <div
             className="flex-none mr-10 place-self-end hover:cursor-pointer"
             onClick={() => {
-              navigate("/me");
+              navigate("/teammate");
             }}
           >
-            나의 일기장
+            조원 소개
           </div>
           <div
             className="flex-none mr-10 place-self-end hover:cursor-pointer"

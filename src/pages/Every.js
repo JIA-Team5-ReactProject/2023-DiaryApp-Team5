@@ -35,6 +35,7 @@ function Every() {
             id={element.id}
             name={element.user_id}
             postDate={element.post_date}
+            img={element.images[0]}
           />
         ))}
       </div>
