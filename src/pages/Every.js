@@ -33,7 +33,7 @@ function Every() {
           <DiaryCard
             key={element.id}
             id={element.id}
-            name={element.user_id}
+            name={element.title}
             postDate={element.post_date}
           />
         ))}

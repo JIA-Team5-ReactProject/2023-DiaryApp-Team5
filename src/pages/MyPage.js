@@ -15,6 +15,7 @@ function MyPage() {
         .get(`http://localhost:3001/diary?id=${userID}`)
         .then((response) => {
           setDiaries(response.data);
+          console.log(response.data);
         })
         .catch((error) => console.error("Error fetching data: ", error));
     }
