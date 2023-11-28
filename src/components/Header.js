@@ -21,7 +21,7 @@ function Header() {
 
   return (
     <div className="h-10">
-      <div className="fixed flex p-4 bg-white w-full border z-20">
+      <div className="fixed flex p-4 bg-white w-full border z-20 dark:bg-slate-700 dark:border-none">
         <div className="flex-none text-5xl tracking-tighter font-mono mr-14">
           <div className="flex items-center">
             {login === true ? (
@@ -66,7 +66,7 @@ function Header() {
         </div>
         <div className="flex-1 flex tracking-tighter font-extralight">
           <div
-            className="flex-none mr-10 place-self-end hover:cursor-pointer"
+            className="flex-none mr-10 place-self-end hover:cursor-pointer dark:font-bold"
             onClick={() => {
               navigate("/teammate");
             }}
@@ -74,7 +74,7 @@ function Header() {
             조원 소개
           </div>
           <div
-            className="flex-none mr-10 place-self-end hover:cursor-pointer"
+            className="flex-none mr-10 place-self-end hover:cursor-pointer dark:font-bold"
             onClick={() => {
               navigate("/every");
             }}
