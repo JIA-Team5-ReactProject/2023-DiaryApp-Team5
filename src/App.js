@@ -2,7 +2,7 @@ import Main from "./pages/Main";
 import Every from "./pages/Every";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Me from "./pages/Me";
+import Teammate from "./pages/Teammate";
 import MyPage from "./pages/MyPage";
 import Diary from "./pages/Diary";
 import Register from "./pages/Register";
@@ -22,7 +22,7 @@ function App() {
         <Route path="/diary/:id" element={<Diary />} />
         <Route path="/" element={<Main />} />
         <Route path="/every" element={<Every />} />
-        <Route path="/me" element={<Me />} />
+        <Route path="/teammate" element={<Teammate />} />
         <Route path="/myPage/:id" element={<MyPage />} />
         <Route path="/account/:id" element={<Account />} />
         <Route path="/login" element={<Login />} />
