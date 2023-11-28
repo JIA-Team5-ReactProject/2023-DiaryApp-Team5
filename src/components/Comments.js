@@ -9,9 +9,10 @@ import {
 
 export default function Comments({ diaryId }) {
   //{ diaryId } 페이지에서 보낸 useParams (페이지의 id)
+  const userId = localStorage.getItem("id");
   const [content, setContent] = useState("");
   const [comments, setComments] = useState([]);
-  const [loggedInUserId, setLoggedInUserId] = useState("aaa"); // 로그인된 사용자 아이디 (임시)
+  const [loggedInUserId, setLoggedInUserId] = useState("userId"); // 로그인된 사용자 아이디 (임시)
 
   const handleContentChange = (e) => {
     setContent(e.target.value); //댓글 입력 칸에 적은 값을 넣음 ???
@@ -29,8 +30,12 @@ export default function Comments({ diaryId }) {
       //services/DiaryService에 있는 함수에 새로넣을 값(payload)을 넣음
       const newComment = await postComment(payload);
       //Comments에 있는 데이터(...p)에 새로넣을 데이터를 추가함
-      setComments((p) => [...p, newComment]);
-      setContent("");
+      if (newComment) {
+        setComments((p) => [...p, newComment]);
+        setContent("");
+      } else {
+        setComments(newComment);
+      }
     },
   };
 
@@ -78,13 +83,17 @@ export default function Comments({ diaryId }) {
       {/* 댓글 목록 */}
       <div className="mt-6">
         <h1 className="text-lg font-bold">댓글 창</h1>
-        <table className="w-full mt-4">
-          <tbody>
-            {comments.map((comment) => (
-              <Comment key={comment.id} data={comment} />
-            ))}
-          </tbody>
-        </table>
+        {comments.length > 0 ? (
+          <table className="w-full mt-4">
+            <tbody>
+              {comments.map((comment) => (
+                <Comment key={comment.id} data={comment} />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>댓글 없음</p>
+        )}
       </div>
     </>
   );
