@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AWS from "aws-sdk";
-// import ReactQuill from "react-quill";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function DiaryValue({ diaryId }) {
   const [diary, setDiary] = useState(null);
@@ -118,6 +119,18 @@ function DiaryValue({ diaryId }) {
     return <div>Loading...</div>;
   }
 
+  //quill 디자인 
+  const modules = {
+    toolbar: {
+      container: [
+        [{'header':[1,2,3,4,5,6,false]}],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{'color':['black','red','blue','purple','pink','orange','yellow']}],
+        [{'list':'ordered'},{'list':'bullet'}]
+      ]
+    }
+  }
+
   return (
     <div className="p-4">
       <div className="flex justify-between">
@@ -135,11 +148,10 @@ function DiaryValue({ diaryId }) {
               placeholder="제목을 입력해주세요"
             />
           </div>
-          <textarea
-            className="border border-black p-2 w-full"
+          <ReactQuill
             value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="일기를 작성해주세요"
+            onChange={(e) => setContent(e)}
+            modules={modules}
           />
           <button onClick={handleAddPhoto}>사진 추가</button>
           <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
@@ -172,8 +184,7 @@ function DiaryValue({ diaryId }) {
         <>
           <div className="text-xl font-bold mb-4">제목: {diary.title}</div>
           <hr className="my-4" />
-          {/* <ReactQuill readOnly></ReactQuill> */}
-          <div className="text-base mb-4">내용: {diary.content}</div>
+          <div dangerouslySetInnerHTML={{ __html: diary.content }}/>
           <hr className="my-4" />
           {diary.images &&
             diary.images.map((image, index) => (
@@ -205,6 +216,5 @@ function DiaryValue({ diaryId }) {
       )}
     </div>
   );
-}
-
+  }
 export default DiaryValue;
