@@ -104,14 +104,29 @@ function DiaryValue({ diaryId }) {
   };
 
   const handleDelete = () => {
-    fetch(`http://localhost:3001/diary/${diaryId}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        navigate("/");
+    fetch(`http://localhost:3001/comments?diary_id=${diaryId}`)
+      .then((response) => response.json())
+      .then((comments) => {
+        comments.forEach((comment) => {
+          fetch(`http://localhost:3001/comments/${comment.id}`, {
+            method: "DELETE",
+          })
+            .catch((error) => {
+              console.error("Error deleting comment:", error);
+            });
+        });
+        fetch(`http://localhost:3001/diary/${diaryId}`, {
+          method: "DELETE",
+        })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("Error fetching comments:", error);
       });
   };
 
