@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AWS from "aws-sdk";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 function DiaryValue({ diaryId }) {
   const [diary, setDiary] = useState(null);
@@ -58,7 +58,7 @@ function DiaryValue({ diaryId }) {
       const newPreviews = newFiles.map(async (file) => {
         const params = {
           Bucket: "j1a",
-          Key: file.name.replace(/\s/g, '_'), // 파일 이름에서 공백을 밑줄로 대체
+          Key: file.name.replace(/\s/g, "_"), // 파일 이름에서 공백을 밑줄로 대체
           Body: file,
           ACL: "public-read",
         };
@@ -110,10 +110,9 @@ function DiaryValue({ diaryId }) {
         comments.forEach((comment) => {
           fetch(`http://localhost:3001/comments/${comment.id}`, {
             method: "DELETE",
-          })
-            .catch((error) => {
-              console.error("Error deleting comment:", error);
-            });
+          }).catch((error) => {
+            console.error("Error deleting comment:", error);
+          });
         });
         fetch(`http://localhost:3001/diary/${diaryId}`, {
           method: "DELETE",
@@ -134,23 +133,34 @@ function DiaryValue({ diaryId }) {
     return <div>Loading...</div>;
   }
 
-  //quill 디자인 
+  //quill 디자인
   const modules = {
     toolbar: {
       container: [
-        [{'header':[1,2,3,4,5,6,false]}],
-        ['bold', 'italic', 'underline', 'strike'],
-        [{'color':['black','red','blue','purple','pink','orange','yellow']}],
-        [{'list':'ordered'},{'list':'bullet'}]
-      ]
-    }
-  }
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["bold", "italic", "underline", "strike"],
+        [
+          {
+            color: [
+              "black",
+              "red",
+              "blue",
+              "purple",
+              "pink",
+              "orange",
+              "yellow",
+            ],
+          },
+        ],
+        [{ list: "ordered" }, { list: "bullet" }],
+      ],
+    },
+  };
 
   return (
     <div className="p-4">
       <div className="flex justify-between">
-        <div className="text-xl font-bold mb-4">아이디: {diary.user_id}</div>
-        <div className="text-sm mb-4">작성일: {diary.post_date}</div>
+        <div className="text-sm">작성일: {diary.post_date}</div>
       </div>
       <hr className="my-4" />
       {isEditing ? (
@@ -169,13 +179,20 @@ function DiaryValue({ diaryId }) {
             modules={modules}
           />
           <button onClick={handleAddPhoto}>사진 추가</button>
-          <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+          <div
+            style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+          >
             {previews.map((preview, index) => (
               <div key={index} style={{ position: "relative" }}>
                 <img
                   src={preview}
                   alt={`이미지 ${index}`}
-                  style={{ width: "23%", height: "23%", objectFit: "cover", margin: "8px" }}
+                  style={{
+                    width: "23%",
+                    height: "23%",
+                    objectFit: "cover",
+                    margin: "8px",
+                  }}
                 />
                 <button
                   style={{ position: "absolute", top: "8px", right: "8px" }}
@@ -199,7 +216,7 @@ function DiaryValue({ diaryId }) {
         <>
           <div className="text-xl font-bold mb-4">제목: {diary.title}</div>
           <hr className="my-4" />
-          <div dangerouslySetInnerHTML={{ __html: diary.content }}/>
+          <div dangerouslySetInnerHTML={{ __html: diary.content }} />
           <hr className="my-4" />
           {diary.images &&
             diary.images.map((image, index) => (
@@ -231,5 +248,5 @@ function DiaryValue({ diaryId }) {
       )}
     </div>
   );
-  }
+}
 export default DiaryValue;
