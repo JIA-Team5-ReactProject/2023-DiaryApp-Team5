@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AWS from "aws-sdk";
 import ReactQuill from "react-quill";
@@ -6,6 +7,7 @@ import "react-quill/dist/quill.snow.css";
 
 function DiaryValue({ diaryId }) {
   const [diary, setDiary] = useState(null);
+  const [writer, setWriter] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -25,19 +27,39 @@ function DiaryValue({ diaryId }) {
   });
 
   useEffect(() => {
-    getDiary();
+    getData();
   }, []);
 
-  const getDiary = () => {
-    fetch(`http://localhost:3001/diary/${diaryId}`)
-      .then((response) => response.json())
-      .then((json) => {
-        setDiary(json);
-        setTitle(json.title);
-        setContent(json.content);
-      })
-      .catch((error) => {
-        console.log("Error fetching diary data:", error);
+  const getData = async () => {
+    try {
+      axios
+        .get(`http://localhost:3001/diary/${diaryId}`)
+        .then((res) => {
+          console.log(res);
+          setDiary(res.data);
+          setContent(res.data.content);
+          setTitle(res.data.title);
+
+          return res.data; //서버에서 받은 데이터를 반환, 반환된 값은 밑의 .then으로 전달
+        })
+        .then((diaryData) => {
+          //전달받은 데이터 = diary 데이터임
+          return getWriter(diaryData);
+        })
+        .then(() => {
+          console.log("getWriter 호출 후");
+          console.log(writer);
+        });
+    } catch {}
+  };
+
+  const getWriter = async (diaryData) => {
+    await axios
+      .get(`http://localhost:3001/users/${diaryData.user_id}`)
+      //diary의 user_id와 같은 users의 id를 가지는 데이터를 가져옴
+      .then((res) => {
+        //가져온 값은 res
+        setWriter(res.data);
       });
   };
 
@@ -159,7 +181,8 @@ function DiaryValue({ diaryId }) {
 
   return (
     <div className="p-4">
-      <div className="flex justify-between">
+      <div className="text-xl font-bold mb-4">
+        <div>작성자 : {writer.nickname}</div>
         <div className="text-sm">작성일: {diary.post_date}</div>
       </div>
       <hr className="my-4" />
