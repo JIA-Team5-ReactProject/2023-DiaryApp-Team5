@@ -18,6 +18,7 @@ function MyPage() {
         {diaries.map((diary) => (
           <DiaryCard
             key={diary.id}
+            id={diary.id}
             name={diary.title}
             postDate={diary.post_date}
           />

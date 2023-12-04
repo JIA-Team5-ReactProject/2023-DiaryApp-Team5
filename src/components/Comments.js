@@ -12,7 +12,7 @@ export default function Comments({ diaryId }) {
   const userId = localStorage.getItem("id");
   const [content, setContent] = useState("");
   const [comments, setComments] = useState([]);
-  const [loggedInUserId, setLoggedInUserId] = useState("userId"); // 로그인된 사용자 아이디 (임시)
+  const [loggedInUserId, setLoggedInUserId] = useState(userId); // 로그인된 사용자 아이디 (임시)
 
   const handleContentChange = (e) => {
     setContent(e.target.value); //댓글 입력 칸에 적은 값을 넣음 ???
@@ -34,6 +34,7 @@ export default function Comments({ diaryId }) {
         setComments((p) => [...p, newComment]);
         setContent("");
       } else {
+        console.log();
         setComments(newComment);
       }
     },
@@ -100,7 +101,8 @@ export default function Comments({ diaryId }) {
 }
 
 const Comment = ({ data }) => {
-  const [loggedInUserId, setLoggedInUserId] = useState("aaa"); // 로그인된 사용자 아이디 (임시)
+  const userId = localStorage.getItem("id");
+  const [loggedInUserId, setLoggedInUserId] = useState(userId); // 로그인된 사용자 아이디 (임시)
 
   const handler = {
     delete: async () => {
