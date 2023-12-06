@@ -4,13 +4,13 @@ import { s3UploadState } from "../store/recoil";
 
 // 밑에 내용 나중에 추가
 // S3 기본 설정(리전, 액세스 키, 시크릿 액세스 키)
-const S3_BUCKET = "";
-const REGION = "ap-northeast-2";
+const S3_BUCKET = "j1a";
+const REGION = process.env.REACT_APP_AWS_REGION;
 
 AWS.config.update({
   region: REGION,
-  accessKeyId: "",
-  secretAccessKey: "",
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
 });
 
 // S3 인스턴스 생성 -> S3 버킷 접근 가능(즉, 업로드 가능하다는 뜻)
