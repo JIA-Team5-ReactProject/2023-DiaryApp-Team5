@@ -18,9 +18,20 @@ export default function Comments({ diaryId }) {
     setContent(e.target.value); //댓글 입력 칸에 적은 값을 넣음 ???
   };
 
+  //로그인 된지 확인하는 함수
+  const isLoggedIn = () => {
+    const userId = localStorage.getItem("id");
+    return !!userId; // userId가 존재하면 true, 그렇지 않으면 false 반환
+  };
+
   //댓글 작성
   const handler = {
     post: async () => {
+      if (!isLoggedIn()) {
+        alert("로그인 후 이용 가능합니다.");
+        setContent("");
+        return;
+      }
       //post라는 함수를 정의 그리고 그 포스트 안에 payload,newComment 가 들어있는거임
       const payload = {
         user_id: loggedInUserId, // 로그인된 사용자 아이디로 댓글 작성
@@ -47,7 +58,7 @@ export default function Comments({ diaryId }) {
     //setComments는 새로 작성할 댓글 데이터
 
     getCommentsByDiaryId(diaryId).then((cmts) => setComments(cmts));
-  }, [comments]); //댓글 db에 움직임이 있으면 렌더링(새로고침) 함
+  }, []); //댓글 db에 움직임이 있으면 렌더링(새로고침) 함
 
   return (
     <>
@@ -75,6 +86,7 @@ export default function Comments({ diaryId }) {
             type="button"
             className="px-4 py-2 text-white bg-black rounded-md cursor-pointer"
             onClick={handler.post}
+            disabled={!isLoggedIn}
           >
             작성 완료
           </button>
@@ -88,7 +100,12 @@ export default function Comments({ diaryId }) {
           <table className="w-full mt-4">
             <tbody>
               {comments.map((comment) => (
-                <Comment key={comment.id} data={comment} />
+                <Comment /* Comment에서 사용 해야하는 함수나 값을 넘겨줌 */
+                  key={comment.id}
+                  data={comment}
+                  diaryId={diaryId}
+                  setComments={setComments}
+                />
               ))}
             </tbody>
           </table>
@@ -100,7 +117,7 @@ export default function Comments({ diaryId }) {
   );
 }
 
-const Comment = ({ data }) => {
+const Comment = ({ data, diaryId, setComments }) => {
   const userId = localStorage.getItem("id");
   const [loggedInUserId, setLoggedInUserId] = useState(userId); // 로그인된 사용자 아이디 (임시)
 
@@ -109,6 +126,8 @@ const Comment = ({ data }) => {
       if (loggedInUserId === data.user_id) {
         //들고온 데이터 안의 user_id값과 현재 로그인 되있는 id값을 비교
         deleteComment(data.id);
+        getCommentsByDiaryId(diaryId).then((cmts) => setComments(cmts));
+        //바꾼 db를 다시 불러오는 함수 (다시 불러와야 화면에 삭제된 db를 보여줌)
       } else {
         console.log("댓글을 삭제할 권한이 없습니다.");
       }
