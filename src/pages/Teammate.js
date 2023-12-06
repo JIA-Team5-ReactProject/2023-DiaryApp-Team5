@@ -2,7 +2,7 @@ import Mate from "../components/Mate.js";
 import { useState } from "react";
 import kim from "../assets/kim.jpg";
 import hyen from "../assets/hyen.jpg";
-import jae from "../assets/jae.jpg";
+import hoon from "../assets/hoon.jpg";
 import ji from "../assets/ji.jpg";
 import min from "../assets/min.jpg";
 
@@ -11,7 +11,7 @@ export default function Teammate() {
     {
       id: 5,
       name: "김지훈",
-      img: jae,
+      img: hoon,
       ability: "야만족",
       bio: "미개하고 엄청나다.",
       github: "https://github.com/Jhoon00",
