@@ -65,7 +65,7 @@ export default function Comments({ diaryId }) {
       <link href="/dist/output.css" rel="stylesheet"></link>
 
       {/* 댓글 작성 폼 */}
-      <div className="p-6 bg-gray-100 rounded">
+      <div className="p-6 bg-gray-100 rounded font-extralight">
         <h2 className="text-xl font-bold mb-4">댓글 작성</h2>
         <form>
           <div className="mb-4">

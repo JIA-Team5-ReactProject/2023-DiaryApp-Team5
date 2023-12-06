@@ -183,7 +183,7 @@ function DiaryValue({ diaryId }) {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 font-extralight">
       <div className="text-xl font-bold mb-4">
         <div>작성자 : {writer.nickname}</div>
         <div className="text-sm">작성일: {diary.post_date}</div>
