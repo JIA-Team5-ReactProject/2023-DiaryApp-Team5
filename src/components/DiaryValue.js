@@ -126,29 +126,32 @@ function DiaryValue({ diaryId }) {
   };
 
   const handleDelete = () => {
-    fetch(`http://localhost:3001/comments?diary_id=${diaryId}`)
-      .then((response) => response.json())
-      .then((comments) => {
-        comments.forEach((comment) => {
-          fetch(`http://localhost:3001/comments/${comment.id}`, {
-            method: "DELETE",
-          }).catch((error) => {
-            console.error("Error deleting comment:", error);
+    const confirmDelete = window.confirm("정말로 삭제하시겠습니까?");
+    if (confirmDelete) {
+        fetch(`http://localhost:3001/diary/${diaryId}`, {
+          method: 'DELETE',
+        })
+        .then(() => {
+          navigate('/every'); // 게시글 삭제 후 페이지 이동
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+  
+        // 해당 다이어리와 관련된 모든 댓글 삭제
+        fetch(`http://localhost:3001/comments?diary_id=${diaryId}`)
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(comment => {
+            fetch(`http://localhost:3001/comments/${comment.id}`, {
+              method: 'DELETE',
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
           });
         });
-        fetch(`http://localhost:3001/diary/${diaryId}`, {
-          method: "DELETE",
-        })
-          .then(() => {
-            navigate("/");
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      })
-      .catch((error) => {
-        console.error("Error fetching comments:", error);
-      });
+    }
   };
 
   if (diary === null) {

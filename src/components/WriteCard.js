@@ -1,6 +1,7 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import {useState,useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AWS from "aws-sdk";
 
@@ -18,6 +19,9 @@ export default function WriteCard() {
 
   //사진 미리보기 State
   const [previews, setPreviews] = useState([]);
+
+  //네비게이트 사용 변수
+  const navigate = useNavigate();
 
 //-----------------------------------------------------------------------
   //버킷 담는 State
@@ -127,16 +131,16 @@ export default function WriteCard() {
         images: imageUrls, // 이미지 URL들을 DB에 저장
       };
       
-
-
       try {
-        await axios.post('http://localhost:3001/diary', diary);
+        const response = await axios.post('http://localhost:3001/diary', diary);
+        const diaryId = response.data.id;
         alert('일기가 성공적으로 저장되었습니다.');
         setTitle("");
         setContent("");
         setDate("");
         setFiles([]);
         setPreviews([]);
+        navigate(`/diary/${diaryId}`);
       } catch (error) {
         console.error('저장 실패', error);
       }
