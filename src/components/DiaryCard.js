@@ -1,11 +1,6 @@
-import { useState } from "react";
-import { useRecoilState } from "recoil";
-import { modalState } from "../store/recoil";
 import { useNavigate } from "react-router-dom";
 
 function DiaryCard({ id, name, postDate, img }) {
-  const [heart, setHeart] = useState(true); //하트 on/off
-  const [modal, setModal] = useRecoilState(modalState);
   const navigate = useNavigate();
 
   return (
@@ -30,9 +25,9 @@ function DiaryCard({ id, name, postDate, img }) {
       </div>
       <div className="mb-4">
         <img
-          src={img}
+          src={img ?? "https://images.unsplash.com/photo-1574629173115-01ba37282238?auto=format&fit=crop&q=80&w=1976&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
           alt="post_image"
-          className="w-full h-48 object-contain rounded-md"
+          className={img ? "w-full h-48 object-contain rounded-md" : "w-full h-48 object-cover rounded-md"}
         />
       </div>
     </div>
