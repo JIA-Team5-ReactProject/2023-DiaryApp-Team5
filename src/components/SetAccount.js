@@ -36,29 +36,43 @@ function SetAccout() {
     try {
       await axios.patch(`http://localhost:3001/users/${userId}`, updates);
       console.log("유저 정보 수정 성공");
+      alert('수정이 완료되었습니다.');
+      window.location.replace(`/account/${userId}`);
     } catch (error) {
       console.error("유저 정보 수정 실패", error);
     }
   };
 
-  // 회원 탈퇴
-  const handleAccountDeletion = async () => {
-    const userId = localStorage.getItem("id");
-    const confirmed = window.confirm("정말로 탈퇴하시겠습니까?");
+// 게시글 삭제
+const deletePostsByUserId = async (userId) => {
+  const postsResponse = await axios.get(`http://localhost:3001/diary?user_id=${userId}`);
+  const userPosts = postsResponse.data;
 
-    if (confirmed) {
-      try {
-        await axios.delete(`http://localhost:3001/users/${userId}`);
-        window.alert("탈퇴가 완료 되었습니다.");
-        setLogin(false);
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("id");
-        navigate("/");
-      } catch (error) {
-        console.error("계정 삭제 실패", error);
-      }
+  for (const post of userPosts) {
+    await axios.delete(`http://localhost:3001/diary/${post.id}`);
+  }
+};
+
+// 계정 삭제
+const handleAccountDeletion = async () => {
+  const userId = localStorage.getItem("id");
+  const confirmed = window.confirm("정말로 탈퇴하시겠습니까?");
+
+  if (confirmed) {
+    try {
+      await deletePostsByUserId(userId);
+      await axios.delete(`http://localhost:3001/users/${userId}`);
+
+      window.alert("탈퇴가 완료 되었습니다.");
+      setLogin(false);
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("id");
+      navigate("/");
+    } catch (error) {
+      console.error("계정 삭제 실패", error);
     }
-  };
+  }
+};
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
