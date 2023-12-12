@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { searchState } from "../store/recoil";
 
 function MyPage() {
-  const [diaries] = useRecoilState(searchState);
+  const [data] = useRecoilState(searchState);
   const userID = localStorage.getItem("id");
 
   return (
@@ -15,12 +15,13 @@ function MyPage() {
       </div>
       <SearchBar type={userID}/>
       <div className="mt-0 grid grid-cols-3 gap-5 p-10">
-        {diaries.map((diary) => (
+        {data.map((element) => (
           <DiaryCard
-            key={diary.id}
-            id={diary.id}
-            name={diary.title}
-            postDate={diary.post_date}
+          key={element.id}
+          id={element.id}
+          name={element.title}
+          postDate={element.post_date}
+          img={element.images[0]}
           />
         ))}
       </div>
