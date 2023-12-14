@@ -132,7 +132,7 @@ export default function WriteCard() {
       };
       
       try {
-        const response = await axios.post('http://localhost:3001/diary', diary);
+        const response = await axios.post('http://localhost:3300/diary', diary);
         const diaryId = response.data.id;
         alert('일기가 성공적으로 저장되었습니다.');
         setTitle("");

@@ -34,7 +34,7 @@ function SetAccout() {
     }
 
     try {
-      await axios.patch(`http://localhost:3001/users/${userId}`, updates);
+      await axios.patch(`http://localhost:3300/users/${userId}`, updates);
       console.log("유저 정보 수정 성공");
       alert('수정이 완료되었습니다.');
       window.location.replace(`/account/${userId}`);
@@ -45,11 +45,11 @@ function SetAccout() {
 
 // 게시글 삭제
 const deletePostsByUserId = async (userId) => {
-  const postsResponse = await axios.get(`http://localhost:3001/diary?user_id=${userId}`);
+  const postsResponse = await axios.get(`http://localhost:3300/diary?user_id=${userId}`);
   const userPosts = postsResponse.data;
 
   for (const post of userPosts) {
-    await axios.delete(`http://localhost:3001/diary/${post.id}`);
+    await axios.delete(`http://localhost:3300/diary/${post.id}`);
   }
 };
 
@@ -61,7 +61,7 @@ const handleAccountDeletion = async () => {
   if (confirmed) {
     try {
       await deletePostsByUserId(userId);
-      await axios.delete(`http://localhost:3001/users/${userId}`);
+      await axios.delete(`http://localhost:3300/users/${userId}`);
 
       window.alert("탈퇴가 완료 되었습니다.");
       setLogin(false);

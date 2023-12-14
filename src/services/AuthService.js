@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const REGISTER_URL = "http://localhost:3001/register";
-const LOGIN_URL = "http://localhost:3001/login";
+const REGISTER_URL = `http://localhost:3300/register`;
+const LOGIN_URL = `http://localhost:3300/login`;
 
 class AuthService {
   static async login(credentials) {
@@ -36,7 +36,7 @@ class AuthService {
   static async isEmailTaken(email) {
     try {
       const response = await axios.get(
-        `http://localhost:3001/users?email=${email}`
+        `http://localhost:3300/users?email=${email}`
       );
       return response.data.length > 0; // 이메일이 이미 존재하는지 여부를 반환
     } catch (error) {

@@ -2,7 +2,7 @@ class SearchService {
  
   static async getDataAll() {
       const request = await fetch(
-        `http://localhost:3001/diary`);
+        `http://localhost:3300/diary`);
       return request.json();
   }
 
@@ -13,7 +13,7 @@ class SearchService {
    */
   static async getDataByUser(userId) {
     const request = await fetch(
-      `http://localhost:3001/diary?user_id=${userId}`);
+      `http://localhost:3300/diary?user_id=${userId}`);
     return request.json();
   }
  /**
