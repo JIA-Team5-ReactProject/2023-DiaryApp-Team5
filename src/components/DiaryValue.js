@@ -33,7 +33,7 @@ function DiaryValue({ diaryId }) {
   const getData = async () => {
     try {
       axios
-        .get(`http://localhost:3001/diary/${diaryId}`)
+        .get(`http://localhost:3300/diary/${diaryId}`)
         .then((res) => {
           console.log(res);
           setDiary(res.data);
@@ -55,7 +55,7 @@ function DiaryValue({ diaryId }) {
 
   const getWriter = async (diaryData) => {
     await axios
-      .get(`http://localhost:3001/users/${diaryData.user_id}`)
+      .get(`http://localhost:3300/users/${diaryData.user_id}`)
       //diary의 user_id와 같은 users의 id를 가지는 데이터를 가져옴
       .then((res) => {
         //가져온 값은 res
@@ -108,7 +108,7 @@ function DiaryValue({ diaryId }) {
 
   const handleSave = async () => {
     const updatedDiary = { ...diary, title, content, images: previews };
-    fetch(`http://localhost:3001/diary/${diaryId}`, {
+    fetch(`http://localhost:3300/diary/${diaryId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -128,7 +128,7 @@ function DiaryValue({ diaryId }) {
   const handleDelete = () => {
     const confirmDelete = window.confirm("정말로 삭제하시겠습니까?");
     if (confirmDelete) {
-        fetch(`http://localhost:3001/diary/${diaryId}`, {
+        fetch(`http://localhost:3300/diary/${diaryId}`, {
           method: 'DELETE',
         })
         .then(() => {
@@ -139,11 +139,11 @@ function DiaryValue({ diaryId }) {
         });
   
         // 해당 다이어리와 관련된 모든 댓글 삭제
-        fetch(`http://localhost:3001/comments?diary_id=${diaryId}`)
+        fetch(`http://localhost:3300/comments?diary_id=${diaryId}`)
         .then(response => response.json())
         .then(data => {
           data.forEach(comment => {
-            fetch(`http://localhost:3001/comments/${comment.id}`, {
+            fetch(`http://localhost:3300/comments/${comment.id}`, {
               method: 'DELETE',
             })
             .catch((error) => {

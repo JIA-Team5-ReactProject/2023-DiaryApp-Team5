@@ -14,7 +14,7 @@ function Profile() {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/users/${userId}`
+          `http://localhost:3300/users/${userId}`
         );
         const userProfile = response.data;
 
@@ -32,7 +32,7 @@ function Profile() {
   const updateUserProfile = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:3001/users/${user.id}`, {
+      await axios.patch(`http://localhost:3300/users/${user.id}`, {
         nickname,
         bio,
       });
