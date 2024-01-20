@@ -23,16 +23,14 @@
     <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
     <img src="https://img.shields.io/badge/tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
 
-  <br>
-
+    <br>
 3. `Library`
 
     <div>
     <img src="https://img.shields.io/badge/jsonserver-000000?style=for-the-badge&logo=json&logoColor=white">
     <img src="https://img.shields.io/badge/Recoil-3578e5?style=for-the-badge&logo=recoil&logoColor=white">
 
-  <br>
-
+    <br>
 4. `Cloud Storage`
 
     <div>
