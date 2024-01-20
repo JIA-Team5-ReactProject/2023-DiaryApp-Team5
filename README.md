@@ -2,34 +2,43 @@
 
 自分の日常を自由に記録し、他の人と共有してコミュニケーションをとることができる日記サービスです。
 
-<br>
 
 ## 💻  Available Scripts
 2年生の2学期、React授業で行われたチームプロジェクトで、授業で学んだReactを活用して開発した日記サービスです。
 
-<br>
 
 ##  🕰️ 開発期間
 
 2023-09-30 ~ 2023-12-14
 
-<br>
 
 ## ⚙️ 開発環境
 1. `Language`
-  -  JavaScript
+   <div>
+   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
+   
+   <br>
 2. `Framework`
-  - React
-  - Tailwind
+    <div>
+    <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
+    <img src="https://img.shields.io/badge/tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+
+  <br>
+
 3. `Library`
-  - Json-server
-  - Json-server-auth
-  - Recoil(State Management)
+
+    <div>
+    <img src="https://img.shields.io/badge/jsonserver-000000?style=for-the-badge&logo=json&logoColor=white">
+    <img src="https://img.shields.io/badge/Recoil-3578e5?style=for-the-badge&logo=recoil&logoColor=white">
+
+  <br>
+
 4. `Cloud Storage`
-  - AWS S3
+
+    <div>
+    <img src="https://img.shields.io/badge/amazons3-569a31?style=for-the-badge&logo=amazons3&logoColor=white">
 
 
-<br>
 
 
 ## 📚 主要機能
@@ -41,7 +50,6 @@
 6. 探したい日記名や作成者名で日記を検索でき、検索時にページがリロードされずに動的にレンダリングされます。
 
 
-<br>
 
 
 ## チームメンバー
