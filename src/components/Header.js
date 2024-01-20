@@ -68,14 +68,6 @@ function Header() {
           <div
             className="flex-none mr-10 place-self-end hover:cursor-pointer dark:font-bold"
             onClick={() => {
-              navigate("/teammate");
-            }}
-          >
-            조원 소개
-          </div>
-          <div
-            className="flex-none mr-10 place-self-end hover:cursor-pointer dark:font-bold"
-            onClick={() => {
               navigate("/every");
             }}
           >
